@@ -8,6 +8,6 @@ An opportunity to track your money expenses via application which is built with 
 - Choose an expense type
 - Create a separate budget for your savings
 - Add tags and comments to your records
-- Simultaneous work of several users on a budget
+- Simultaneous work for several users on a budget
 - See your records for a certain period 
 - Export your expenses into convenient formats (not decided yet which one)
