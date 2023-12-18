@@ -2,6 +2,8 @@
 
 namespace Expense.Tracker.Application.DTO;
 public record BudgetDTO(
-    Guid Id,
+    int Id,
+    string Label,
     Currency Currency,
-    decimal Balance);
+    decimal Balance,
+    int OwnerId);

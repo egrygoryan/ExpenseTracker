@@ -2,9 +2,10 @@
 
 namespace Expense.Tracker.Application.DTO;
 public record RecordDTO(
-    Guid Id,
+    int Id,
     DateTime Date,
     string Note,
     Category Category,
     decimal Amount,
-    Guid UserId);
+    int? UserId,
+    int BudgetId);
