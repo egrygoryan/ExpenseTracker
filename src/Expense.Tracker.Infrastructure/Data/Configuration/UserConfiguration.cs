@@ -9,12 +9,8 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
     {
         builder.HasKey(k => k.Id);
 
-        builder.HasMany(x => x.Records)
+        builder.HasMany(x => x.Budgets)
             .WithOne(x => x.User)
             .OnDelete(DeleteBehavior.Restrict);
-
-        builder.HasMany(x => x.Budgets)
-            .WithMany(x => x.Users)
-            .UsingEntity(x => x.ToTable("UsersBudgets"));
     }
 }
