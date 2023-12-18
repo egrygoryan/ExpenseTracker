@@ -1,5 +1,5 @@
 ﻿namespace Expense.Tracker.Domain.Models;
 public class BaseEntity
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
 }

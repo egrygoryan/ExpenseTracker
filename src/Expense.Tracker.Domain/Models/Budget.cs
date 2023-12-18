@@ -3,24 +3,26 @@
 namespace Expense.Tracker.Domain.Models;
 public class Budget : BaseEntity
 {
-    public Currency Currency { get; }
-    public string BudgetName { get; } = "Default";
-    private decimal Balance { get; set; }
-
-    public ICollection<Record> Records { get; } = new List<Record>();
-    public ICollection<User> Users { get; } = new List<User>();
+    public Budget() { }
     public Budget(
         decimal balance,
         Currency currency,
-        string budgetName)
+        string label,
+        User owner)
     {
         Balance = balance;
         Currency = currency;
-        BudgetName = budgetName;
+        Label = label;
+        Owner = owner;
     }
 
-    public void AddFunds(decimal amount) => Balance += amount;
-    public void SubtractFunds(decimal amount) => Balance -= amount;
-    public decimal GetBalance() => Balance;
-    public void AddRecord(Record entry) => Records.Add(entry);
+    public Currency Currency { get; private set; }
+    public string Label { get; private set; } = "Default";
+    public decimal Balance { get; private set; }
+    public virtual User Owner { get; private set; }
+    public int OwnerId { get; private set; }
+    public virtual ICollection<Record> Records { get; } = new List<Record>();
+    public virtual ICollection<UserBudget> Users { get; } = new List<UserBudget>();
+
+    public void UpdateLabel(string label) => Label = label;
 }

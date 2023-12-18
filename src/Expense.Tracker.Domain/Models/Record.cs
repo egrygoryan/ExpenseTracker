@@ -3,34 +3,13 @@
 namespace Expense.Tracker.Domain.Models;
 public class Record : BaseEntity
 {
-    private decimal _amount;
-    public DateTime Date { get; }
-    public string Note { get; } = string.Empty;
-    public Operation Operation { get; }
-    public Category Category { get; }
-    public User? User { get; }
-    public Budget Budget { get; }
-    public decimal Amount
-    {
-        get { return _amount; }
-        private set
-        {
-            if (value < 0)
-            {
-                throw new InvalidOperationException(
-                    $"You can't provide less or equal to zero value for a record");
-            }
-
-            _amount = value;
-        }
-    }
-
+    public Record() { }
     public Record(
         string note,
         Operation operation,
         decimal amount,
         Category category,
-        User? user,
+        User user,
         Budget budget)
     {
         Note = note;
@@ -41,4 +20,14 @@ public class Record : BaseEntity
         User = user;
         Budget = budget;
     }
+
+    public DateTime Date { get; private set; }
+    public string Note { get; private set; } = string.Empty;
+    public Operation Operation { get; private set; }
+    public Category Category { get; private set; }
+    public decimal Amount { get; private set; }
+
+    public virtual User User { get; private set; }
+    public int? UserId { get; private set; }
+    public virtual Budget Budget { get; private set; }
 }
